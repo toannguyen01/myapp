@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317160043) do
+ActiveRecord::Schema.define(version: 20180317160527) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20180317160043) do
     t.datetime "updated_at", null: false
     t.decimal "price", precision: 6, scale: 2
     t.boolean "published"
-    t.string "short_description"
   end
 
 end
