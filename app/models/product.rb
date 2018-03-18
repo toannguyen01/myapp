@@ -4,6 +4,15 @@ class Product < ActiveRecord::Base
   validate :description_longer_than_title
   scope :published, -> { where(published: true)}
   # scope :description_includes, -> { where('description ILIKE ?', '%ruby' )}
+  before_save :strip_html_from_description, :downcase_field
+
+  def downcase_field
+    self.title = title.downcase
+  end
+
+  def strip_html_from_description
+    self.description = ActionView::Base.full_sanitizer.sanitize(self.description)
+  end
   def description_longer_than_title
     return if title.blank? or description.blank?
     if description.length < title.length
