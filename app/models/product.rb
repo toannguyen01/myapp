@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :category, optional: true
-  
+
   validates :title, :description, presence: true
   validates_numericality_of :price, greater_than: 0 
   validate :description_longer_than_title
@@ -21,4 +21,9 @@ class Product < ActiveRecord::Base
       errors.add(:description, 'can\'t be shorter than title ')
     end
   end
+
+
+  extend Enumerize
+
+  enumerize :level, in: [:easy, :midium, :hard]
 end
