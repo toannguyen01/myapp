@@ -26,4 +26,6 @@ class Product < ActiveRecord::Base
   extend Enumerize
 
   enumerize :level, in: [:easy, :midium, :hard]
+  enumerize :country, in: ISO3166::Country.all_translated
+
 end
